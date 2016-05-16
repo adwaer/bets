@@ -1,0 +1,8 @@
+D:\Projects\Personal\bets\Backend\SN.Http\bin\Debug\SN.Http.dll
+D:\Projects\Personal\bets\Backend\SN.Http\bin\Debug\SN.Http.pdb
+D:\Projects\Personal\bets\Backend\SN.Http\bin\Debug\HtmlAgilityPack.dll
+D:\Projects\Personal\bets\Backend\SN.Http\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\Personal\bets\Backend\SN.Http\bin\Debug\HtmlAgilityPack.xml
+D:\Projects\Personal\bets\Backend\SN.Http\obj\Debug\SN.Http.csprojResolveAssemblyReference.cache
+D:\Projects\Personal\bets\Backend\SN.Http\obj\Debug\SN.Http.dll
+D:\Projects\Personal\bets\Backend\SN.Http\obj\Debug\SN.Http.pdb
