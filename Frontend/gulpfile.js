@@ -169,6 +169,7 @@ gulp.task('build', function() {
             './node_modules/angular-resource/angular-resource.min.js',
             './node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js'])
         .pipe(concat('vendor.js'))
+        .pipe(ngAnnotate())
         .pipe(uglify())
         .pipe(gulp.dest('./build/js'));
 
