@@ -13,6 +13,10 @@
         $scope.isActive = function(hash){
             return location.hash == hash;
         };
+
+        $scope.redirectToMain = function(){
+            window.location.href = '/';
+        };
     }])
     .config(['$routeProvider',
         function($routeProvider) {
