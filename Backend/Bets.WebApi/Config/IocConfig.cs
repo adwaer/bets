@@ -23,7 +23,7 @@ namespace Bets.WebApi.Config
                 .InstancePerRequest();
 
 
-            builder.RegisterApiControllers(Assembly.GetCallingAssembly());
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             return builder.Build();
         }
