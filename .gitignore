@@ -9,3 +9,5 @@
 /Frontend/public
 /Backend/packages
 /Frontend/.idea
+/obj
+/bin
