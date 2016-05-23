@@ -19,11 +19,18 @@ namespace Bets.WebApi.Controllers
         {
             var date = DateTime.UtcNow.Date;
 
-            var bets = await _betsQuery
-                .Execute(date, date.AddDays(1).AddSeconds(-1))
-                .ToArrayAsync();
+            try
+            {
+                var bets = await _betsQuery
+                    .Execute(date, date.AddDays(1).AddSeconds(-1))
+                    .ToArrayAsync();
+                return Ok(bets);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
 
-            return Ok(bets);
         }
     }
 }

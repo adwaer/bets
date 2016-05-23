@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Reflection;
 using Autofac;
+using Autofac.Extras.NLog;
 using Autofac.Integration.WebApi;
 using Bets.Cqrs.Query;
 using Bets.Dal;
@@ -21,6 +22,9 @@ namespace Bets.WebApi.Config
                 .RegisterType<BetsQuery>()
                 .AsSelf()
                 .InstancePerRequest();
+
+            builder
+                .RegisterModule<NLogModule>();
 
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
