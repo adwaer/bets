@@ -14,10 +14,10 @@ namespace Bets.Cqrs.Query
         private readonly DbContext _dbContext;
         private readonly ILogger _logger;
 
-        public BetsQuery(DbContext dbContext, ILogger logger)
+        public BetsQuery(DbContext dbContext)
         {
             _dbContext = dbContext;
-            _logger = logger;
+            //_logger = logger;
         }
 
         public IQueryable<Bet> Execute(DateTime startDate, DateTime endDate)
@@ -30,7 +30,7 @@ namespace Bets.Cqrs.Query
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
+                //_logger.Error(ex);
                 throw;
             }
         }
