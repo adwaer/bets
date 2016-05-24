@@ -38,8 +38,11 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,17 +57,21 @@
     <Compile Include="Migrations\201605162116569_Init.Designer.cs">
       <DependentUpon>201605162116569_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605241944351_identity.cs" />
+    <Compile Include="Migrations\201605241944351_identity.Designer.cs">
+      <DependentUpon>201605241944351_identity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bets.Business\Bets.Business.csproj">
-      <Project>{5E889592-5B16-4022-ACCF-EA7E92DE30B8}</Project>
-      <Name>Bets.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bets.Domain\Bets.Domain.csproj">
       <Project>{4B9A581A-2737-4A2A-9BFD-A8AB749ED2F0}</Project>
       <Name>Bets.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bets.Identity\Bets.Identity.csproj">
+      <Project>{FD91C97B-B671-4E95-BD54-38D8308D0862}</Project>
+      <Name>Bets.Identity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +81,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605162116569_Init.resx">
       <DependentUpon>201605162116569_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605241944351_identity.resx">
+      <DependentUpon>201605241944351_identity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

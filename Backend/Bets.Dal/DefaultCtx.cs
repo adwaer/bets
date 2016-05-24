@@ -11,5 +11,6 @@ namespace Bets.Dal
         }
 
         public DbSet<Bet> Bets { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }
