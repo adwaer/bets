@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Web;
 using Autofac;
 using Autofac.Integration.WebApi;
@@ -13,26 +14,22 @@ namespace Bets.Identity
     {
         public static void Ioc(ContainerBuilder builder)
         {
-            builder.RegisterType<SignInManager<SimpleCutomerAccount, int>>()
+            builder.RegisterType<BetsUserStore>()
+                .As<IUserStore<SimpleCustomerAccount, Guid>>()
                 .AsSelf()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<BetsUserManager>()
-                .As<UserManager<SimpleCutomerAccount, int>>()
+                .As<UserManager<SimpleCustomerAccount, Guid>>()
                 .AsSelf()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<BetsUserStore>()
-                .As<IUserStore<SimpleCutomerAccount, int>>()
+            builder.RegisterType<SignInManager<SimpleCustomerAccount, Guid>>()
                 .AsSelf()
                 .InstancePerLifetimeScope();
 
             builder.Register(c => HttpContext.Current.GetOwinContext().Authentication)
                 .InstancePerLifetimeScope();
-
-            builder.RegisterType<SignInManager<SimpleCutomerAccount, int>>().AsSelf().InstancePerRequest();
-
-            builder.RegisterApiControllers(Assembly.GetCallingAssembly());
         }
     }
 }

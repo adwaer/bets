@@ -162,10 +162,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BetsEditController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bets.Cqrs\Bets.Cqrs.csproj">
+      <Project>{dbc4e306-9f61-4008-8885-5a39b2eb3777}</Project>
+      <Name>Bets.Cqrs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bets.Domain\Bets.Domain.csproj">
       <Project>{4B9A581A-2737-4A2A-9BFD-A8AB749ED2F0}</Project>
       <Name>Bets.Domain</Name>
@@ -175,9 +180,7 @@
       <Name>Bets.WebApi</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

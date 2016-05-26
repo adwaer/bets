@@ -66,10 +66,6 @@
     <Compile Include="Query\BetsQuery.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bets.Business\Bets.Business.csproj">
-      <Project>{5e889592-5b16-4022-accf-ea7e92de30b8}</Project>
-      <Name>Bets.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bets.Dal\Bets.Dal.csproj">
       <Project>{56656234-7D1F-47F4-81B3-5D86E35CF942}</Project>
       <Name>Bets.Dal</Name>

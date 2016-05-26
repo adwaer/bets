@@ -60,11 +60,11 @@
     <Compile Include="Bet.cs" />
     <Compile Include="BetsTotal.cs" />
     <Compile Include="Customer.cs" />
-    <Compile Include="ICutomerAccount.cs" />
+    <Compile Include="ICustomerAccount.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleCutomerAccount.cs" />
+    <Compile Include="SimpleCustomerAccount.cs" />
     <Compile Include="UserRole.cs" />
   </ItemGroup>
   <ItemGroup>

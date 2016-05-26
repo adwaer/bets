@@ -5,12 +5,13 @@ using Microsoft.AspNet.Identity;
 
 namespace Bets.Identity
 {
-    public class BetsUserManager : UserManager<SimpleCutomerAccount, int>
+    public class BetsUserManager : UserManager<SimpleCustomerAccount, Guid>
     {
-        public BetsUserManager(IUserStore<SimpleCutomerAccount, int> store) : base(store)
+        public BetsUserManager(IUserStore<SimpleCustomerAccount, Guid> store) 
+            : base(store)
         {
-            UserTokenProvider = new TotpSecurityStampBasedTokenProvider<SimpleCutomerAccount, int>();
-            UserValidator = new UserValidator<SimpleCutomerAccount, int>(this)
+            UserTokenProvider = new TotpSecurityStampBasedTokenProvider<SimpleCustomerAccount, Guid>();
+            UserValidator = new UserValidator<SimpleCustomerAccount, Guid>(this)
             {
                 AllowOnlyAlphanumericUserNames = false
             };

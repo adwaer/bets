@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Bets.Domain;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Bets.Identity
 {
-    public class BetsUserStore : UserStore<SimpleCutomerAccount, IdentityRole<int, UserRole>, int, IdentityUserLogin<int>, UserRole, IdentityUserClaim<int>>
+    public class BetsUserStore : UserStore<SimpleCustomerAccount, IdentityRole<Guid, UserRole>, Guid, IdentityUserLogin<Guid>, UserRole, IdentityUserClaim<Guid>>
     {
         public BetsUserStore(DbContext ctx) : base(ctx) { }
 
@@ -14,7 +16,7 @@ namespace Bets.Identity
         /// Insert an entity
         /// </summary>
         /// <param name="user"/>
-        public override Task CreateAsync(SimpleCutomerAccount user)
+        public override Task CreateAsync(SimpleCustomerAccount user)
         {
             if (user.Customer == null)
             {
@@ -25,7 +27,7 @@ namespace Bets.Identity
             }
 
             Context
-                .Set<SimpleCutomerAccount>()
+                .Set<SimpleCustomerAccount>()
                 .Add(user);
 
             //if (!user.Roles.Any())
@@ -44,7 +46,7 @@ namespace Bets.Identity
         /// Update an entity
         /// </summary>
         /// <param name="user"/>
-        public override Task UpdateAsync(SimpleCutomerAccount user)
+        public override Task UpdateAsync(SimpleCustomerAccount user)
         {
             return Context.SaveChangesAsync();
         }
@@ -53,7 +55,7 @@ namespace Bets.Identity
         /// Mark an entity for deletion
         /// </summary>
         /// <param name="user"/>
-        public override Task DeleteAsync(SimpleCutomerAccount user)
+        public override Task DeleteAsync(SimpleCustomerAccount user)
         {
             throw new NotImplementedException();
             //user.IsDeleted = true;
@@ -66,9 +68,9 @@ namespace Bets.Identity
         /// </summary>
         /// <param name="userId"/>
         /// <returns/>
-        public override async Task<SimpleCutomerAccount> FindByIdAsync(int userId)
+        public override async Task<SimpleCustomerAccount> FindByIdAsync(Guid userId)
         {
-            SimpleCutomerAccount user = (await Context.Set<SimpleCutomerAccount>().FirstOrDefaultAsync(u => u.Id == userId));
+            SimpleCustomerAccount user = (await Context.Set<SimpleCustomerAccount>().FirstOrDefaultAsync(u => u.Id == userId));
             return user;
         }
         /// <summary>
@@ -76,11 +78,27 @@ namespace Bets.Identity
         /// </summary>
         /// <param name="userName"/>
         /// <returns/>
-        public override async Task<SimpleCutomerAccount> FindByNameAsync(string userName)
+        public override async Task<SimpleCustomerAccount> FindByNameAsync(string userName)
         {
             return await Context
-                .Set<SimpleCutomerAccount>()
+                .Set<SimpleCustomerAccount>()
                 .FirstOrDefaultAsync(ac => ac.Email == userName);
+        }
+
+        public override Task<IList<string>> GetRolesAsync(SimpleCustomerAccount user)
+        {
+            if (user == null) throw new ArgumentNullException(nameof(user));
+
+            IList<string> roles = new string[0];
+            return Task.FromResult(roles);
+        }
+
+        public override Task<IList<Claim>> GetClaimsAsync(SimpleCustomerAccount user)
+        {
+            if (user == null) throw new ArgumentNullException(nameof(user));
+
+            IList<Claim> claims = new Claim[0];
+            return Task.FromResult(claims);
         }
     }
 }

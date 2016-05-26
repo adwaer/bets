@@ -1,9 +1,16 @@
-﻿using System.Net.Http.Formatting;
+﻿using System;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
+using Bets.Dal;
+using Bets.Domain;
 using Microsoft.Owin.Cors;
 using Bets.WebApi.Config;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
 using Owin;
 
 namespace Bets.WebApi
@@ -18,7 +25,6 @@ namespace Bets.WebApi
         {
             var container = IocConfig.Configure();
             ConfigureApp(container, app);
-            
             app.Run(context =>
             {
                 context.Response.ContentType = "text/plain";
@@ -44,6 +50,7 @@ namespace Bets.WebApi
 
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(HttpConfiguration);
+            
         }
     }
 }

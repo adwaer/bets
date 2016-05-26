@@ -1,18 +1,19 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Security;
 using Bets.Domain;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace Bets.Identity.Controllers
 {
-    public class SimpleCutomerController : ApiController
+    public class SimpleCustomerController : ApiController
     {
-        private readonly SignInManager<SimpleCutomerAccount, int> _signInManager;
+        private readonly SignInManager<SimpleCustomerAccount, Guid> _signInManager;
 
-        public SimpleCutomerController(IUserStore<SimpleCutomerAccount, int> signInManager)
+        public SimpleCustomerController(SignInManager<SimpleCustomerAccount, Guid> signInManager)
         {
-            //_signInManager = signInManager;
+            _signInManager = signInManager;
         }
 
         public async Task<IHttpActionResult> Get(string login, string password)
@@ -20,6 +21,7 @@ namespace Bets.Identity.Controllers
             var result = await _signInManager.PasswordSignInAsync(login, password, true, shouldLockout: false);
             if (result == SignInStatus.Success)
             {
+                FormsAuthentication.SetAuthCookie(login, true);
                 return Ok();
             }
             return BadRequest(result.ToString());

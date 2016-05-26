@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Reflection;
 using Autofac;
 using Autofac.Extras.NLog;
@@ -21,7 +22,6 @@ namespace Bets.WebApi.Config
             builder
                 .RegisterType<DefaultCtx>()
                 .As<DbContext>()
-                .AsSelf()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<DefaultCtx>()
@@ -33,8 +33,7 @@ namespace Bets.WebApi.Config
                 .AsSelf()
                 .InstancePerRequest();
 
-            IdentityConfig.Ioc(builder);
-            builder.Register<IUserStore<SimpleCutomerAccount, int>>(c => new BetsUserStore(new DefaultCtx())).AsImplementedInterfaces();
+            builder.Register<IUserStore<SimpleCustomerAccount, Guid>>(c => new BetsUserStore(new DefaultCtx())).AsImplementedInterfaces();
             builder.Register(c => new IdentityFactoryOptions<BetsUserManager>
             {
                 DataProtectionProvider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("ApplicationName")
@@ -45,8 +44,10 @@ namespace Bets.WebApi.Config
                 .RegisterModule<NLogModule>();
 
 
+            IdentityConfig.Ioc(builder);
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterApiControllers(Assembly.GetCallingAssembly());
+            builder.RegisterApiControllers(typeof(IdentityConfig).Assembly);
 
             return builder.Build();
         }

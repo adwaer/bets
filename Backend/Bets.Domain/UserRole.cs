@@ -3,14 +3,14 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Bets.Domain
 {
-    public class UserRole : IdentityUserRole<int>, IEntity<int>
+    public class UserRole : IdentityUserRole<Guid>, IEntity<Guid>
     {
         public string GetId()
         {
             return Id.ToString();
         }
 
-        public int Id { get; set; }
-        public SimpleCutomerAccount User { get; set; }
+        public Guid Id { get; set; }
+        public SimpleCustomerAccount User { get; set; }
     }
 }
