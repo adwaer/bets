@@ -3,12 +3,13 @@
 /Backend/.vs
 /Backend/**/bin
 /Backend/**/obj
+/Backend/packages
 /Frontend/node_modules
 /Frontend/build
-/Frontend/build
 /Frontend/public
-/Backend/packages
-/Frontend/.idea
+/BackOffice/node_modules
+/BackOffice/build
+/BackOffice/public
 /obj
 /bin
 obj
