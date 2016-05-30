@@ -138,10 +138,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\FiltersConfig.cs" />
     <Compile Include="Config\IocConfig.cs" />
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Controllers\BetsController.cs" />
-    <Compile Include="Controllers\ForecastController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -161,10 +161,6 @@
     <ProjectReference Include="..\Bets.Domain\Bets.Domain.csproj">
       <Project>{4B9A581A-2737-4A2A-9BFD-A8AB749ED2F0}</Project>
       <Name>Bets.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bets.Http\Bets.Http.csproj">
-      <Project>{93A1B4AF-D1FA-4185-96D9-111F35133666}</Project>
-      <Name>Bets.Http</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bets.Identity\Bets.Identity.csproj">
       <Project>{FD91C97B-B671-4E95-BD54-38D8308D0862}</Project>

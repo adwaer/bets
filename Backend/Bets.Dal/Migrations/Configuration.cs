@@ -15,7 +15,7 @@ namespace Bets.Dal.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            //AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Bets.Dal.DefaultCtx context)
@@ -67,7 +67,8 @@ namespace Bets.Dal.Migrations
             var customer = new SimpleCustomerAccount
             {
                 UserName = adwaer,
-                Email = adwaer
+                Email = adwaer,
+                EmailConfirmed = true
             };
             var result = userManager.Create(customer);
             if (!result.Succeeded)

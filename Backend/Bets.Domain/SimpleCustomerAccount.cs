@@ -12,6 +12,6 @@ namespace Bets.Domain
 
         [Index("IX_Unique", 1, IsUnique = true), MaxLength(255)]
         public override string UserName { get; set; }
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }
