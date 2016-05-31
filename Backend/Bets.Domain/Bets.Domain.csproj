@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bet.cs" />
+    <Compile Include="BetResult.cs" />
     <Compile Include="BetsTotal.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="ICustomerAccount.cs" />

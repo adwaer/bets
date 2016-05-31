@@ -1,7 +1,7 @@
 ﻿include mixins
 
-div(ng-controller='BetsTodayCtrl')
-    h1.page-header Ставки на сегодня
+div
+    h1.page-header Ставки
     .alert.alert-danger(role="alert" ng-show="Error")
         .alert-link {{Error}}
     //form.search-form(ng-submit="search()")
@@ -19,23 +19,28 @@ div(ng-controller='BetsTodayCtrl')
             +loader
             div(style="min-height: 500px" ng-class="{ loading: isLoading }")
                 +loader
-                .alert.alert-info(role="alert" ng-hide="bets && bets.length")
+                //.alert.alert-info(role="alert" ng-hide="bets && bets.length")
                     .alert-link Отсутствуют данные
-                div(ng-show="bets && bets.length")
-                    .bets(ng-repeat="bet in bets")
-                        .tournament {{bet.Tournament}}
-                        h4.game {{bet.Game}}
-
-                        .forecast
-                            span
-                                label Прогноз:
-                                span.forecast_val {{bet.Forecast}}
-                            span(style="margin-left: 20px;")
-                                label Коэффициент:
-                                span.forecast_val {{bet.Coefficient}}
-
-                        .forecast
-                            span Начало игры: {{bet.GameStartDate | datetime}}
-
-                        .forecast-content
-                            div {{bet.Content}}
+                div
+                    .bets
+                        table.table.table-condensed
+                            thead
+                                tr
+                                    th #
+                                    th Дата
+                                    th Турнир
+                                    th Игра
+                                    th Прогноз
+                                    th Коэфициент
+                                    th Ставка
+                                    th Описание
+                            tbody
+                                tr(ng-repeat="bet in bets" ng-class="{ success: bet.Result && bet.Result.Soceed, danger: bet.Result && bet.Result.Soceed === false }")
+                                    th {{$index}}
+                                    td {{bet.GameStartDate}}
+                                    td {{bet.Tournament}}
+                                    td {{bet.Game}}
+                                    td {{bet.Forecast}}
+                                    td {{bet.Coefficient}}
+                                    td {{bet.Amount}}
+                                    td {{bet.Content}}

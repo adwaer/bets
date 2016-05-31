@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace Bets.BackOffice.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class BetsEditController : ApiController
     {
         public async Task<IHttpActionResult> Get()

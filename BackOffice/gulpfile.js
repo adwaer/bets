@@ -190,4 +190,4 @@ gulp.task('build', function() {
         .pipe(gulp.dest('./build'))
 });
 
-gulp.task('default', ['http-server-live'], function () { });
+gulp.task('default', ['watch'], function () { });

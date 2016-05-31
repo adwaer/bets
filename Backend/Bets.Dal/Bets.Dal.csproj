@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201605262212191_init.Designer.cs">
       <DependentUpon>201605262212191_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605310020072_bet-results.cs" />
+    <Compile Include="Migrations\201605310020072_bet-results.Designer.cs">
+      <DependentUpon>201605310020072_bet-results.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,6 +81,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605262212191_init.resx">
       <DependentUpon>201605262212191_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605310020072_bet-results.resx">
+      <DependentUpon>201605310020072_bet-results.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

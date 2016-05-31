@@ -6,6 +6,7 @@ using Bets.Cqrs.Query;
 
 namespace Bets.WebApi.Controllers
 {
+    [AllowAnonymous]
     public class BetsController : ApiController
     {
         private readonly BetsQuery _betsQuery;
