@@ -42,7 +42,7 @@ gulp.task('js_vendor', function() {
 
 // Собираем html из Jade
 gulp.task('jade', function() {
-    gulp.src(['./assets/template/*.jade', '!./assets/template/_*.jade'])
+    gulp.src(['./assets/template/**/*.jade', '!./assets/template/_*.jade'])
         .pipe(jade({
             pretty: true
         }))  // Собираем Jade только в папке ./assets/template/ исключая файлы с _*
@@ -158,7 +158,7 @@ gulp.task('build', function() {
         .pipe(gulp.dest('./build/css/')) // записываем css
 
     // jade
-    gulp.src(['./assets/template/*.jade', '!./assets/template/_*.jade'])
+    gulp.src(['./assets/template/**/*.jade', '!./assets/template/_*.jade'])
         .pipe(jade())
         .pipe(gulp.dest('./build/'))
 

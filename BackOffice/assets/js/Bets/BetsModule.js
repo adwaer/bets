@@ -9,4 +9,5 @@
                     reloadOnSearch: false
                 })
         }
-    ]);
+    ])
+    .controller('BetAddCtrl', BetAddCtrl);

@@ -91,6 +91,8 @@ namespace Bets.Host
                 }
             }
             ctx.SaveChanges();
+
+            Console.WriteLine("done");
             Console.ReadKey();
         }
     }

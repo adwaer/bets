@@ -1,4 +1,4 @@
-window.BetsTableCtrl = function ($scope, resourceFactory) {
+window.BetAddCtrl = function ($scope, resourceFactory) {
     $scope.isLoading = false;
 
     $scope.search = function() {
@@ -17,19 +17,10 @@ window.BetsTableCtrl = function ($scope, resourceFactory) {
             .finally(function(){
                 $scope.isLoading = false;
             });
-
-        $scope.add = function(){
-
-        };
     };
 
     function ctor() {
-        resourceFactory
-            .getFor('api/bets')
-            .then(function(resource){
-                $scope.BetsApi = resource;
-                $scope.search();
-            });
+
     }
     ctor();
 };

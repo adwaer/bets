@@ -4,7 +4,8 @@
         'ui.bootstrap',
         'requests',
         'bets',
-        'sidebar'
+        'sidebar',
+        'ngDialog'
     ])
     .config(['$routeProvider',
         function($routeProvider) {

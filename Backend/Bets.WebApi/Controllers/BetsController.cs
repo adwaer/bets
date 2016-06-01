@@ -23,7 +23,7 @@ namespace Bets.WebApi.Controllers
             try
             {
                 var bets = await _betsQuery
-                    .Execute(date, date.AddDays(1).AddSeconds(-1))
+                    .Execute(date, date.AddDays(2).AddSeconds(-1))
                     .ToArrayAsync();
                 return Ok(bets);
             }

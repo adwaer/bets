@@ -4,15 +4,14 @@ div
     h1.page-header Ставки
     .alert.alert-danger(role="alert" ng-show="Error")
         .alert-link {{Error}}
-    //form.search-form(ng-submit="search()")
+    form.search-form
         .row
             .col-lg-6
                 .alert.alert-danger(role="alert" ng-show="Error")
                     .alert-link {{Error}}
                 .input-group
-                    input.form-control(placeholder="Введите IP адрес" ng-model="searchPattern" required)
                     span.input-group-btn
-                        button.btn.btn-default(type="submit") Искать
+                        button.btn.btn-default(ng-dialog template="bet_add_form.html" ctrl="BetAddCtrl") Добавить
 
     h3.sub-header
         .table-responsive(ng-class="{ loading: isLoading }")
@@ -35,7 +34,7 @@ div
                                     th Ставка
                                     th Описание
                             tbody
-                                tr(ng-repeat="bet in bets" ng-class="{ success: bet.Result && bet.Result.Soceed, danger: bet.Result && bet.Result.Soceed === false }")
+                                tr(ng-repeat-start="bet in bets" ng-class="{ success: bet.Result && bet.Result.Soceed, danger: bet.Result && bet.Result.Soceed === false, info: bet.Result && bet.Result.Soceed === null }")
                                     th {{$index}}
                                     td {{bet.GameStartDate}}
                                     td {{bet.Tournament}}
@@ -44,3 +43,9 @@ div
                                     td {{bet.Coefficient}}
                                     td {{bet.Amount}}
                                     td {{bet.Content}}
+                                tr(ng-repeat-end ng-show="bet.Result && bet.Result.Soceed")
+                                    td(colspan="10" align="center")
+                                        | Выигрыш: {{bet.Result.Gain}}
+                                        | Чистая прибыль:
+                                        a(style="background: greenyellow") {{(bet.Result.Gain - bet.Amount).toFixed(2)}}
+                                        |  Комментарий: {{bet.Result.Comment}}
