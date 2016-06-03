@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Reflection;
 using System.Web;
 using Autofac;
-using Autofac.Integration.WebApi;
 using Bets.Domain;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
-namespace Bets.Identity
+namespace Bets.Identity.Config
 {
     public static class IdentityConfig
     {
@@ -19,7 +16,7 @@ namespace Bets.Identity
                 .AsSelf()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<BetsUserManager>()
+            builder.RegisterType<IdentityUserManager>()
                 .As<UserManager<SimpleCustomerAccount, Guid>>()
                 .AsSelf()
                 .InstancePerLifetimeScope();
@@ -30,6 +27,12 @@ namespace Bets.Identity
 
             builder.Register(c => HttpContext.Current.GetOwinContext().Authentication)
                 .InstancePerLifetimeScope();
+
+            builder
+                .Register(c => IdentityMapper.Register())
+                .Keyed<IMapper>("identityMapping")
+                .As<IMapper>()
+                .SingleInstance();
         }
     }
 }

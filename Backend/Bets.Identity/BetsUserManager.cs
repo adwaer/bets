@@ -19,7 +19,7 @@ namespace Bets.Identity
 
         public static BetsUserManager Get(DbContext dncontext)
         {
-            return new BetsUserManager(new BetsUserStore(dncontext));
+            return new BetsUserManager(new IdentityUserStore(dncontext));
         }
     }
 }

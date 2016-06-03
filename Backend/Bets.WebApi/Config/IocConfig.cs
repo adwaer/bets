@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Reflection;
+using Adwaer.Identity;
+using Adwaer.Identity.Config;
+using Adwaer.Identity.Entitites;
 using Autofac;
 using Autofac.Extras.NLog;
 using Autofac.Integration.WebApi;
 using Bets.Cqrs.Query;
 using Bets.Dal;
 using Bets.Domain;
-using Bets.Identity;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace Bets.WebApi.Config
@@ -33,12 +34,12 @@ namespace Bets.WebApi.Config
                 .AsSelf()
                 .InstancePerRequest();
 
-            builder.Register<IUserStore<SimpleCustomerAccount, Guid>>(c => new BetsUserStore(new DefaultCtx())).AsImplementedInterfaces();
-            builder.Register(c => new IdentityFactoryOptions<BetsUserManager>
+            builder.Register<IUserStore<SimpleCustomerAccount, Guid>>(c => new IdentityUserStore(new DefaultCtx())).AsImplementedInterfaces();
+            builder.Register(c => new IdentityFactoryOptions<IdentityUserManager>
             {
                 DataProtectionProvider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("ApplicationName")
             });
-            builder.RegisterType<BetsUserManager>();
+            builder.RegisterType<IdentityUserManager>();
 
             builder
                 .RegisterModule<NLogModule>();

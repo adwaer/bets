@@ -1,4 +1,5 @@
 ﻿using System;
+using Adwaer.Entity;
 
 namespace Bets.Domain
 {

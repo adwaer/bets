@@ -1,13 +1,10 @@
 using System.Configuration;
-using System.Diagnostics;
-using Bets.Domain;
-using Bets.Identity;
+using Adwaer.Identity;
+using Adwaer.Identity.Entitites;
 using Microsoft.AspNet.Identity;
 
 namespace Bets.Dal.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -62,7 +59,7 @@ namespace Bets.Dal.Migrations
             const string adwaer = "adwaer@live.ru";
             const string password = "DevPas123";
 
-            var userManager = BetsUserManager.Get(context);
+            var userManager = IdentityUserManager.Get(context);
 
             var customer = new SimpleCustomerAccount
             {

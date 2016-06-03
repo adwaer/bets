@@ -106,6 +106,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\BasicAuthHttpModule.cs" />
+    <Compile Include="Config\IdentityConfig.cs" />
     <Compile Include="Controllers\SimpleCutomerController.cs" />
     <Compile Include="IdentityConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

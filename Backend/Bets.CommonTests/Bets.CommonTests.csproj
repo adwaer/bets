@@ -60,10 +60,6 @@
       <Project>{4b9a581a-2737-4a2a-9bfd-a8ab749ed2f0}</Project>
       <Name>Bets.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bets.Host\Bets.Host.csproj">
-      <Project>{4C8D5FEC-52B1-45AF-B239-20EA3561ED9A}</Project>
-      <Name>Bets.Host</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

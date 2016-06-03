@@ -8,9 +8,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Bets.Identity
 {
-    public class BetsUserStore : UserStore<SimpleCustomerAccount, IdentityRole<Guid, UserRole>, Guid, IdentityUserLogin<Guid>, UserRole, IdentityUserClaim<Guid>>
+    public class IdentityUserStore : UserStore<SimpleCustomerAccount, IdentityRole<Guid, UserRole>, Guid, IdentityUserLogin<Guid>, UserRole, IdentityUserClaim<Guid>>
     {
-        public BetsUserStore(DbContext ctx) : base(ctx) { }
+        public IdentityUserStore(DbContext ctx) : base(ctx) { }
 
         /// <summary>
         /// Insert an entity

@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Adwaer.Identity.Entitites;
 using Bets.Domain;
 
 namespace Bets.Dal

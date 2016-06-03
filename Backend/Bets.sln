@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bets.Domain", "Bets.Domain\Bets.Domain.csproj", "{4B9A581A-2737-4A2A-9BFD-A8AB749ED2F0}"
 EndProject
@@ -30,8 +30,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bets.Web", "Bets.Web\Bets.Web.csproj", "{11D61880-F929-4710-A7B4-A247E70DE283}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bets.BackOffice", "Bets.BackOffice\Bets.BackOffice.csproj", "{22F9503C-555C-4863-987D-B67F95A7B8D9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bets.Identity", "Bets.Identity\Bets.Identity.csproj", "{FD91C97B-B671-4E95-BD54-38D8308D0862}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{54C59ECD-FEA1-4958-AF07-9C5A4824D5E6}"
 EndProject
@@ -79,10 +77,6 @@ Global
 		{22F9503C-555C-4863-987D-B67F95A7B8D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22F9503C-555C-4863-987D-B67F95A7B8D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22F9503C-555C-4863-987D-B67F95A7B8D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD91C97B-B671-4E95-BD54-38D8308D0862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD91C97B-B671-4E95-BD54-38D8308D0862}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD91C97B-B671-4E95-BD54-38D8308D0862}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD91C97B-B671-4E95-BD54-38D8308D0862}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +92,5 @@ Global
 		{93A1B4AF-D1FA-4185-96D9-111F35133666} = {1A28B58E-1FEC-449B-880A-DD292B1E527B}
 		{11D61880-F929-4710-A7B4-A247E70DE283} = {7900D9FB-3D72-4F53-AF9F-9E82286FB03C}
 		{22F9503C-555C-4863-987D-B67F95A7B8D9} = {7900D9FB-3D72-4F53-AF9F-9E82286FB03C}
-		{FD91C97B-B671-4E95-BD54-38D8308D0862} = {1A28B58E-1FEC-449B-880A-DD292B1E527B}
 	EndGlobalSection
 EndGlobal
