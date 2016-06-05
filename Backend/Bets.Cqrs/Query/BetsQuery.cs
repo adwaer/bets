@@ -2,11 +2,12 @@
 using System.Data.Entity;
 using System.Linq;
 using Autofac.Extras.NLog;
+using Bets.Cqrs.Criteria;
 using Bets.Domain;
 
 namespace Bets.Cqrs.Query
 {
-    public class BetsQuery : IQuery<DateTime, DateTime, IQueryable<Bet>>
+    public class BetsQuery : IQuery<BetCondition, IQueryable<Bet>>
     {
         private readonly DbContext _dbContext;
         private readonly ILogger _logger;
@@ -17,13 +18,13 @@ namespace Bets.Cqrs.Query
             //_logger = logger;
         }
 
-        public IQueryable<Bet> Execute(DateTime startDate, DateTime endDate)
+        public IQueryable<Bet> Execute(BetCondition condition)
         {
             try
             {
                 return _dbContext
                     .Set<Bet>()
-                    .Where(bet => bet.ShowDate >= startDate && bet.ShowDate <= endDate);
+                    .Where(bet => bet.ShowDate >= condition.StartDate && bet.ShowDate <= condition.EndDate);
             }
             catch (Exception ex)
             {

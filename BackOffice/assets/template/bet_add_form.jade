@@ -1,1 +1,42 @@
-| add form
+form.form-horizontal(ng-submit="submit()" name="addBetForm")
+         .modal-header
+             h3.modal-title Создание ставки
+         .modal-body
+             .alert.alert-danger(role="alert" ng-show="Error")
+                 a.alert-link {{Error}}
+             .form-group
+                 label.col-sm-4.control-label Турнир
+                 .col-sm-8
+                     input.form-control(type="text" placeholder="Введите название турнира" ng-model="model.tournament" required)
+             .form-group
+                 label.col-sm-4.control-label Игра
+                 .col-sm-8
+                     input.form-control(type="text" placeholder="Введите название игры" ng-model="model.game" required)
+             .form-group
+                 label.col-sm-4.control-label Прогноз
+                 .col-sm-8
+                     input.form-control(type="text" placeholder="Прогноз (например: П1, Ф1(0))" ng-model="model.forecast" required)
+             .form-group
+                 label.col-sm-4.control-label Коэффициент
+                 .col-sm-8
+                     input.form-control(type="number" step="any" placeholder="Введите коэффициент для прогноза" ng-model="model.coef" required)
+             .form-group
+                 label.col-sm-4.control-label Сумма ставки
+                 .col-sm-8
+                     input.form-control(type="number" step="any" placeholder="Введите сумму ставики" ng-model="model.amount" required)
+             .form-group
+                 label.col-sm-4.control-label Начало игры
+                 .col-sm-8
+                     input.form-control(type="datetime-local" placeholder="Введите дату и время начала игры" ng-model="model.gameStartDate" required)
+             .form-group
+                 label.col-sm-4.control-label Начало показа ставки
+                 .col-sm-8
+                     input.form-control(type="datetime-local" placeholder="Введите дату и время начала показа ставки" ng-model="model.showDate" required)
+             .form-group
+                 label.col-sm-4.control-label Описание
+                 .col-sm-8
+                     textarea.form-control(placeholder="Напишите обоснование ставки и т.п." ng-model="model.content" required)
+
+         .modal-footer
+             button.btn.btn-default(type="button" ng-click="$close()") Отмена
+             button.btn.btn-primary(type="submit") Ок

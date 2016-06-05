@@ -33,6 +33,7 @@ namespace Bets.WebApi
             };
 
             HttpConfiguration.Formatters.Clear();
+            HttpConfiguration.Formatters.Add(new BinaryMediaTypeFormatter());
             HttpConfiguration.Formatters.Add(new JsonMediaTypeFormatter());
             HttpConfiguration.Formatters.JsonFormatter.SerializerSettings = new Newtonsoft.Json.JsonSerializerSettings();
 

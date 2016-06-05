@@ -5,11 +5,19 @@
         'requests',
         'bets',
         'sidebar',
-        'ngDialog'
+        'ngDialog',
+        'authentication',
+        'ngCookies',
+        'LocalStorageModule'
     ])
     .config(['$routeProvider',
         function($routeProvider) {
             $routeProvider
+            .when('/login', {
+                templateUrl: '/login.html',
+                controller: window.AuthCtrl,
+                reloadOnSearch: false
+            })
             .otherwise({
                 redirectTo: '/betstable'
             });
@@ -26,7 +34,16 @@
             return _date.toUpperCase();
 
         };
-    });
+    })
+
+    .run(['$rootScope', '$location', 'authenticationService', function ($rootScope, $location, authenticationService) {
+        $rootScope.$on('$routeChangeStart', function (event) {
+
+            if (!authenticationService.IsAuthentificated()) {
+                $location.path('/login');
+            }
+        });
+    }]);
 //.config([
 //    '$httpProvider', function ($httpProvider) {
 //         $httpProvider.defaults.useXDomain = true;

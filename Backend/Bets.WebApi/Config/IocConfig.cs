@@ -7,9 +7,9 @@ using Adwaer.Identity.Entitites;
 using Autofac;
 using Autofac.Extras.NLog;
 using Autofac.Integration.WebApi;
+using Bets.Cqrs.Command;
 using Bets.Cqrs.Query;
 using Bets.Dal;
-using Bets.Domain;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
@@ -43,6 +43,11 @@ namespace Bets.WebApi.Config
 
             builder
                 .RegisterModule<NLogModule>();
+
+            builder
+                .RegisterType<SaveCommand>()
+                .AsSelf()
+                .InstancePerRequest();
 
 
             IdentityConfig.Ioc(builder);

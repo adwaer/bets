@@ -10,4 +10,17 @@
                 })
         }
     ])
+    .factory('Bet',
+        function ($resource, resourceFactory, authenticationService) {
+            return $resource(resourceFactory.serviceHost() + 'api/bets:id', {},
+                {
+                    query: {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'Basic ' + authenticationService.GetCredentials()
+                        },
+                        isArray: true
+                    }
+                });
+        })
     .controller('BetAddCtrl', BetAddCtrl);

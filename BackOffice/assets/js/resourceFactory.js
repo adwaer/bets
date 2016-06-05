@@ -1,26 +1,19 @@
 angular
     .module('requests', [])
-    .factory('resourceFactory', function ($resource) {
+    .factory('resourceFactory', function ($resource, $q, $http) {
 
         var config = undefined;
-        return {
-            serviceHost: function(){
-                if(config){
-                    return config;
-                }
+        $http.get('settings.json')
+            .then(function (result) {
+                config = result.data.host;
+            });
 
-                config = $resource('settings.json')
-                    .get(function (data) {
-                        return data.host;
-                    });
+        return {
+            serviceHost: function (){
                 return config;
             },
             getFor: function (uri) {
-                return this.serviceHost()
-                    .$promise
-                    .then(function (config) {
-                        return $resource(config.host + uri);
-                    });
+                return $resource(this.serviceHost() + uri + ':id');
             }
         };
     });

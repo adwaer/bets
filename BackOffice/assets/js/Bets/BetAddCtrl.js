@@ -1,26 +1,33 @@
-window.BetAddCtrl = function ($scope, resourceFactory) {
+window.BetAddCtrl = function ($scope, Bet) {
     $scope.isLoading = false;
 
-    $scope.search = function() {
-        $scope.bets = undefined;
-        $scope.isLoading = true;
-        $scope.Error = 0;
+    $scope.submit = function() {
+        if($scope.addBetForm.$invalid){
+            return;
+        }
 
-        $scope.BetsApi.query()
-            .$promise
-            .then(function (data) {
-                $scope.bets = data;
-            })
-            .catch(function(){
-                $scope.Error = 'Произошла ошибка, возможно вы ввели некорректные данные';
-            })
-            .finally(function(){
-                $scope.isLoading = false;
+        $scope.Error = '';
+        $scope.isLoading = true;
+
+        $scope.model.$save(function () {
+                $scope.$close();
+            },
+            function (result) {
+                if(result.data.ModelState){
+                    for(var v in result.data.ModelState){
+                        $scope.Error += result.data.ModelState[v];
+                    }
+                } else {
+                    $scope.Error = result.statusText || 'Невозможно сохранить, сервер вернул ошибку';
+                }
             });
     };
 
     function ctor() {
-
+        $scope.model = new Bet();
+        $scope.model.showDate = new Date();
+        $scope.model.showDate.setHours(0,0,0,0);
+        $scope.model.gameStartDate = $scope.model.showDate;
     }
     ctor();
 };

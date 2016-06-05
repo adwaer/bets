@@ -35,7 +35,7 @@ div
                                     th Описание
                             tbody
                                 tr(ng-repeat-start="bet in bets" ng-class="{ success: bet.Result && bet.Result.Soceed, danger: bet.Result && bet.Result.Soceed === false, info: bet.Result && bet.Result.Soceed === null }")
-                                    th {{$index}}
+                                    th {{$index + 1}}
                                     td {{bet.GameStartDate}}
                                     td {{bet.Tournament}}
                                     td {{bet.Game}}

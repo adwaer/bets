@@ -1,35 +1,33 @@
-window.BetsTableCtrl = function ($scope, resourceFactory) {
+window.BetsTableCtrl = function ($scope, Bet) {
     $scope.isLoading = false;
 
-    $scope.search = function() {
+    $scope.search = function () {
         $scope.bets = undefined;
         $scope.isLoading = true;
         $scope.Error = 0;
 
-        $scope.BetsApi.query()
+        Bet.query()
             .$promise
             .then(function (data) {
                 $scope.bets = data;
             })
-            .catch(function(){
-                $scope.Error = 'Произошла ошибка, возможно вы ввели некорректные данные';
+            .catch(function (result) {
+                if (result.data.ModelState) {
+                    for (var v in result.data.ModelState) {
+                        $scope.Error += result.data.ModelState[v];
+                    }
+                } else {
+                    $scope.Error = 'Невозможно сохранить, сервер вернул ошибку';
+                }
             })
             .finally(function(){
                 $scope.isLoading = false;
             });
-
-        $scope.add = function(){
-
-        };
     };
 
     function ctor() {
-        resourceFactory
-            .getFor('api/bets')
-            .then(function(resource){
-                $scope.BetsApi = resource;
-                $scope.search();
-            });
+        $scope.search();
     }
+
     ctor();
 };

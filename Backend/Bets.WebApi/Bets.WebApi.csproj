@@ -31,11 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Adwaer.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Adwaer.Entity.1.0.1\lib\net452\Adwaer.Entity.dll</HintPath>
+      <HintPath>..\packages\Adwaer.Entity.1.0.3\lib\net452\Adwaer.Entity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Adwaer.Identity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Adwaer.Identity.1.0.1\lib\net452\Adwaer.Identity.dll</HintPath>
+      <HintPath>..\packages\Adwaer.Identity.1.0.4\lib\net452\Adwaer.Identity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -43,7 +43,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.3.5.0.0.Fakes, Version=3.5.0.0, Culture=neutral, PublicKeyToken=0ae41878053f6703, processorArchitecture=MSIL">
-      <HintPath>..\packages\Adwaer.Identity.1.0.1\lib\net452\Autofac.3.5.0.0.Fakes.dll</HintPath>
+      <HintPath>..\packages\Adwaer.Identity.1.0.4\lib\net452\Autofac.3.5.0.0.Fakes.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Extras.NLog, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -115,7 +115,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Adwaer.Identity.1.0.1\lib\net452\Microsoft.QualityTools.Testing.Fakes.dll</HintPath>
+      <HintPath>..\packages\Adwaer.Identity.1.0.4\lib\net452\Microsoft.QualityTools.Testing.Fakes.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -142,6 +142,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\BasicAuthHttpModule.cs" />
+    <Compile Include="Config\BinaryMediaTypeFormatter.cs" />
     <Compile Include="Config\FiltersConfig.cs" />
     <Compile Include="Config\IocConfig.cs" />
     <Compile Include="Config\RouteConfig.cs" />
@@ -171,6 +173,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ValidateModelAttribute.cs" />
+    <Compile Include="ViewModel\BetAddModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

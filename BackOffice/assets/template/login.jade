@@ -1,0 +1,36 @@
+form.form-horizontal(ng-submit="submit()" name="loginForm")
+    .modal-header
+        h3.modal-title Авторизация
+    .modal-body
+        .alert.alert-danger(role="alert" ng-show="Error")
+            a.alert-link {{Error}}
+        .form-group
+            label.col-sm-2.control-label Email
+            .col-sm-10
+                input.form-control(type="email" placeholder="Email" ng-model="model.email")
+        .form-group
+            label.col-sm-2.control-label Пароль
+            .col-sm-10
+                input.form-control(type="password" placeholder="Пароль" ng-model="model.password")
+        .row.col-sm-offset-2
+            .form-group.pull-left
+                .col-sm-12
+                    .checkbox
+                        label
+                            input(type="checkbox")
+                            | Запомнить меня
+            //.form-group.pull-right(style="margin-right: 17px;")
+                div
+                    .checkbox
+                        label
+                            a(ng-dialog template="account/register.html" ctrl="RegisterCtrl") Еще не регистрировались?
+    .modal-footer
+        //.col-sm-offset-2.pull-left
+            a.btn.btn-social-icon.btn-facebook(data-toggle="tooltip" title="Вход через Facebook")
+                i.fa.fa-facebook
+            a.btn.btn-social-icon.btn-vk(data-toggle="tooltip" title="Вход через Вконтакте")
+                i.fa.fa-vk
+            a.btn.btn-social-icon.btn-odnoklassniki(data-toggle="tooltip" title="Вход через Одноклассники")
+                i.fa.fa-odnoklassniki
+        button.btn.btn-primary(type="submit") Войти
+        button.btn.btn-default(type="button" ng-click="$close()") Отмена
