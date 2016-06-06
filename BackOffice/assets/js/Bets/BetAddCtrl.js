@@ -1,8 +1,8 @@
-window.BetAddCtrl = function ($scope, Bet) {
+window.BetAddCtrl = function ($scope, $timeout, Bet, dlgScope) {
     $scope.isLoading = false;
 
-    $scope.submit = function() {
-        if($scope.addBetForm.$invalid){
+    $scope.submit = function () {
+        if ($scope.addBetForm.$invalid) {
             return;
         }
 
@@ -13,8 +13,8 @@ window.BetAddCtrl = function ($scope, Bet) {
                 $scope.$close();
             },
             function (result) {
-                if(result.data.ModelState){
-                    for(var v in result.data.ModelState){
+                if (result.data && result.data.ModelState) {
+                    for (var v in result.data.ModelState) {
                         $scope.Error += result.data.ModelState[v];
                     }
                 } else {
@@ -25,9 +25,17 @@ window.BetAddCtrl = function ($scope, Bet) {
 
     function ctor() {
         $scope.model = new Bet();
-        $scope.model.showDate = new Date();
-        $scope.model.showDate.setHours(0,0,0,0);
-        $scope.model.gameStartDate = $scope.model.showDate;
+
+        var bet = dlgScope.$parent.bet;
+        if (bet) {
+            angular.extend($scope.model, bet);
+        }
+        else {
+            $scope.model.showDate = new Date();
+            $scope.model.showDate.setHours(0, 0, 0, 0);
+            $scope.model.gameStartDate = $scope.model.showDate;
+        }
     }
+
     ctor();
 };

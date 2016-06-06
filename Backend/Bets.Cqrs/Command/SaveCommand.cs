@@ -16,10 +16,21 @@ namespace Bets.Cqrs.Command
 
         public async Task Execute(object par)
         {
-            _dbContext
-                .Set(par.GetType())
-                .Add(par);
-
+            var type = par.GetType();
+            var ipProp = type.GetProperty("Id");
+            if (!ipProp.PropertyType.IsValueType)
+            {
+                throw new NotImplementedException();
+            }
+            if (ipProp.GetValue(par) == Activator.CreateInstance(ipProp.PropertyType))
+            {
+                _dbContext.Entry(par).State = EntityState.Added;
+            }
+            else
+            {
+                _dbContext.Entry(par).State = EntityState.Modified;
+            }
+            
             await _dbContext.SaveChangesAsync();
         }
     }

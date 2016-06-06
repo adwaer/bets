@@ -27,11 +27,11 @@ form.form-horizontal(ng-submit="submit()" name="addBetForm")
              .form-group
                  label.col-sm-4.control-label Начало игры
                  .col-sm-8
-                     input.form-control(type="datetime-local" placeholder="Введите дату и время начала игры" ng-model="model.gameStartDate" required)
+                     input.form-control(type="datetime-local" placeholder="Введите дату и время начала игры" ng-model="model.gameStartDate" required min="2016-01-01T00:00:00" max="2020-12-31T00:00:00")
              .form-group
                  label.col-sm-4.control-label Начало показа ставки
                  .col-sm-8
-                     input.form-control(type="datetime-local" placeholder="Введите дату и время начала показа ставки" ng-model="model.showDate" required)
+                     input.form-control(type="datetime-local" placeholder="Введите дату и время начала показа ставки" ng-model="model.showDate" required min="2016-01-01T00:00:00" max="2020-12-31T00:00:00")
              .form-group
                  label.col-sm-4.control-label Описание
                  .col-sm-8

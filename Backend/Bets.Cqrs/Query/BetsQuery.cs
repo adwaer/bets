@@ -24,7 +24,8 @@ namespace Bets.Cqrs.Query
             {
                 return _dbContext
                     .Set<Bet>()
-                    .Where(bet => bet.ShowDate >= condition.StartDate && bet.ShowDate <= condition.EndDate);
+                    .Where(bet => bet.ShowDate >= condition.StartDate && bet.ShowDate <= condition.EndDate)
+                    .OrderByDescending(b => b.ShowDate);
             }
             catch (Exception ex)
             {

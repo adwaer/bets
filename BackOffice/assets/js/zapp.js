@@ -22,20 +22,12 @@
                 redirectTo: '/betstable'
             });
         }])
-    .filter('datetime', function($filter) {
-        return function (input) {
-            if (input == null) {
-                return "";
-            }
-
-            var _date = $filter('date')(new Date(input),
-                'MMM dd yyyy - HH:mm:ss');
-
-            return _date.toUpperCase();
-
-        };
-    })
-
+    .config(["$httpProvider", function ($httpProvider) {
+        $httpProvider.defaults.transformResponse.push(function(responseData){
+            helpers.convertDateStringsToDates(responseData);
+            return responseData;
+        });
+    }])
     .run(['$rootScope', '$location', 'authenticationService', function ($rootScope, $location, authenticationService) {
         $rootScope.$on('$routeChangeStart', function (event) {
 
@@ -50,8 +42,6 @@
 //           delete $httpProvider.defaults.headers.common['X-Requested-With'];
 //      }
 //]);
-
-
 
 angular.element(document).ready(function () {
     angular.bootstrap(document, ['app']);

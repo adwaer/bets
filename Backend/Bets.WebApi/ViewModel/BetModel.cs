@@ -4,8 +4,11 @@ using Bets.Domain;
 
 namespace Bets.WebApi.ViewModel
 {
-    public class BetAddModel
+    [DataContract]
+    public class BetModel
     {
+        [DataMember(Name = "id")]
+        public int Id { get; set; }
         /// <summary>
         /// Игра
         /// </summary>
@@ -47,10 +50,14 @@ namespace Bets.WebApi.ViewModel
         [DataMember(Name = "showDate", IsRequired = true)]
         public DateTime ShowDate { get; set; }
 
+        [DataMember(Name = "result")]
+        public BetResultViewModel Result { get; set; }
+
         public Bet ConvertToBet()
         {
             return new Bet
             {
+                Id = Id,
                 Game = Game,
                 Tournament = Tournament,
                 Forecast = Forecast,
@@ -61,5 +68,30 @@ namespace Bets.WebApi.ViewModel
                 ShowDate = ShowDate
             };
         }
+
+        public static BetModel ConvertFromEntity(Bet bet)
+        {
+            return new BetModel
+            {
+                Id = bet.Id,
+                Game = bet.Game,
+                Tournament = bet.Tournament,
+                Forecast = bet.Forecast,
+                Amount = bet.Amount,
+                Content = bet.Content,
+                Coefficient = bet.Coefficient,
+                GameStartDate = bet.GameStartDate,
+                ShowDate = bet.ShowDate,
+                Result = bet.Result == null ? null: new BetResultViewModel
+                {
+                    Id = bet.Result.Id,
+                    Gain = bet.Result.Gain,
+                    Comment = bet.Result.Comment,
+                    Socceed = bet.Result.Soceed,
+                    MakeDate = bet.Result.MakeDate
+                }
+            };
+        }
+
     }
 }

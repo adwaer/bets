@@ -30,11 +30,6 @@ namespace Bets.Host
         private static void ParseCsv()
         {
             var ctx = new DefaultCtx();
-            if (ctx.Bets
-                .Any())
-            {
-                return;
-            }
 
             using (var reader = File.OpenText("bets.csv"))
             {

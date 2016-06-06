@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Bets.Cqrs.Command;
@@ -28,8 +29,8 @@ namespace Bets.WebApi.Controllers
             {
                 model = new BetCondition
                 {
-                    StartDate = DateTime.UtcNow.Date,
-                    EndDate = DateTime.UtcNow.Date.AddDays(2).AddSeconds(-1),
+                    StartDate = DateTime.UtcNow.Date.AddDays(-1).AddSeconds(-1),
+                    EndDate = DateTime.UtcNow.Date.AddDays(1).AddSeconds(-1),
                     Count = 17
                 };
             }
@@ -39,7 +40,7 @@ namespace Bets.WebApi.Controllers
                 var bets = await _betsQuery
                     .Execute(model)
                     .ToArrayAsync();
-                return Ok(bets);
+                return Ok(bets.Select(BetModel.ConvertFromEntity));
             }
             catch (Exception ex)
             {
@@ -47,7 +48,7 @@ namespace Bets.WebApi.Controllers
             }
         }
 
-        public async Task<IHttpActionResult> Post(BetAddModel model)
+        public async Task<IHttpActionResult> Post(BetModel model)
         {
             var bet = model.ConvertToBet();
             bet.MakeDate = DateTime.UtcNow;

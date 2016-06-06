@@ -9,13 +9,17 @@ angular
                         animation: true,
                         templateUrl: attributes.template,
                         controller: attributes.ctrl,
-                        resolve: attributes.resolve || function () {
+                        resolve: {
+                            dlgScope: function(){
+                                return scope;
+                            }
                         }
                     });
                 });
             },
             scope: true,
-            restrict: 'AE'
+            restrict: 'AE',
+            require: '?ngModel'
         };
 
     });

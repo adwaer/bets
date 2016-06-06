@@ -33,19 +33,24 @@ div
                                     th Коэфициент
                                     th Ставка
                                     th Описание
+                                    th
                             tbody
-                                tr(ng-repeat-start="bet in bets" ng-class="{ success: bet.Result && bet.Result.Soceed, danger: bet.Result && bet.Result.Soceed === false, info: bet.Result && bet.Result.Soceed === null }")
+                                tr(ng-repeat-start="bet in bets" ng-class="{ success: bet.result && bet.result.socceed, danger: bet.result && bet.result.socceed === false, active: bet.result && bet.result.socceed === null }")
                                     th {{$index + 1}}
-                                    td {{bet.GameStartDate}}
-                                    td {{bet.Tournament}}
-                                    td {{bet.Game}}
-                                    td {{bet.Forecast}}
-                                    td {{bet.Coefficient}}
-                                    td {{bet.Amount}}
-                                    td {{bet.Content}}
-                                tr(ng-repeat-end ng-show="bet.Result && bet.Result.Soceed")
+                                    td {{bet.gameStartDate | date:'medium'}}
+                                    td {{bet.tournament}}
+                                    td {{bet.game}}
+                                    td {{bet.forecast}}
+                                    td {{bet.coefficient}}
+                                    td {{bet.amount | currency}}
+                                    td {{bet.content}}
+                                    td(style="width: 110px")
+                                        div(ng-show="!bet.result || bet.result.socceed === null")
+                                            button(style="float: left" ng-dialog template="bet_add_form.html" ctrl="BetAddCtrl") edit
+                                            button(style="float: left") result
+                                tr(ng-repeat-end ng-show="bet.result && bet.result.socceed")
                                     td(colspan="10" align="center")
-                                        | Выигрыш: {{bet.Result.Gain}}
+                                        | Выигрыш: {{bet.result.gain}}
                                         | Чистая прибыль:
-                                        a(style="background: greenyellow") {{(bet.Result.Gain - bet.Amount).toFixed(2)}}
-                                        |  Комментарий: {{bet.Result.Comment}}
+                                        a(style="background: greenyellow") {{(bet.result.gain - bet.amount).toFixed(2)}}
+                                        |  Комментарий: {{bet.result.comment}}

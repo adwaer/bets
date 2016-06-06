@@ -37,7 +37,8 @@ gulp.task('js_vendor', function() {
             './node_modules/angular-resource/angular-resource.min.js',
             './node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js',
             './node_modules/angular-cookies/angular-cookies.js',
-            './node_modules/angular-local-storage/dist/angular-local-storage.js'])
+            './node_modules/angular-local-storage/dist/angular-local-storage.js',
+            './node_modules/angular-i18n/angular-locale_ru-ru.js'])
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest('./public/js'))
 });
@@ -171,7 +172,8 @@ gulp.task('build', function() {
             './node_modules/angular-resource/angular-resource.min.js',
             './node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js',
             './node_modules/angular-cookies/angular-cookies.js',
-            './node_modules/angular-local-storage/dist/angular-local-storage.js'])
+            './node_modules/angular-local-storage/dist/angular-local-storage.js',
+            './node_modules/angular-i18n/angular-locale_ru-ru.js'])
         .pipe(concat('vendor.js'))
         .pipe(ngAnnotate())
         .pipe(uglify())
